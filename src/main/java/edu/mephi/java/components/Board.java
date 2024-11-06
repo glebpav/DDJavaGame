@@ -1,33 +1,35 @@
 package edu.mephi.java.components;
 
-import edu.mephi.java.events.OnScoreEarned;
+import edu.mephi.java.events.OnItemDragListener;
+import edu.mephi.java.events.OnScoreEarnedListener;
 import edu.mephi.java.utils.BoardPoint;
 import edu.mephi.java.utils.ColorManager;
 import edu.mephi.java.utils.GameLogic;
+import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 
-import static edu.mephi.java.GameSettings.NUMBER_OF_TILES_COLORS;
-import static edu.mephi.java.GameSettings.TILE_SIZE;
+import static edu.mephi.java.GameSettings.*;
 
 public class Board extends JPanel {
 
-    private final int rows = 5;
-    private final int cols = 5;
+    private final int rows = NUMBER_OF_TILES;
+    private final int cols = NUMBER_OF_TILES;
     private final BoardItem[][] items;
 
-    private OnScoreEarned onScoreEarned;
+    private OnScoreEarnedListener onScoreEarnedListener;
 
     public Board() {
         setLayout(null);
         items = new BoardItem[rows][cols];
         generateItems();
+        setBounds(new Rectangle(0, 0, cols * TILE_SIZE, rows * TILE_SIZE));
     }
 
-    public void setOnScoreEarned(OnScoreEarned onScoreEarned) {
-        this.onScoreEarned = onScoreEarned;
+    public void setOnScoreEarned(OnScoreEarnedListener onScoreEarnedListener) {
+        this.onScoreEarnedListener = onScoreEarnedListener;
     }
 
     private void generateItems() {
@@ -39,9 +41,10 @@ public class Board extends JPanel {
                 add(items[i][j]);
             }
         }
+        clearBoard(GameLogic.checkBoard(items));
     }
 
-    BoardItem.OnItemDraggedListener onItemDraggedListener = (boardItem, mouseEvent) -> {
+    OnItemDragListener onItemDraggedListener = (boardItem, mouseEvent) -> {
         int xDif = boardItem.getInitialDragX() - mouseEvent.getXOnScreen();
         int yDif = boardItem.getInitialDragY() - mouseEvent.getYOnScreen();
 
@@ -108,12 +111,14 @@ public class Board extends JPanel {
     }
 
     private void processBoard() {
-
-
         Collection<BoardPoint> deletingPoints = GameLogic.checkBoard(items);
-        if (onScoreEarned != null && !deletingPoints.isEmpty()) {
-            onScoreEarned.onEarn(deletingPoints.size());
+        if (onScoreEarnedListener != null && !deletingPoints.isEmpty()) {
+            onScoreEarnedListener.onEarn(deletingPoints.size());
         }
+        clearBoard(deletingPoints);
+    }
+
+    private void clearBoard(Collection<BoardPoint> deletingPoints) {
         while (!deletingPoints.isEmpty()) {
             for (BoardPoint boardPoint : deletingPoints) {
                 items[boardPoint.getX()][boardPoint.getY()]
@@ -123,9 +128,6 @@ public class Board extends JPanel {
             }
             deletingPoints = GameLogic.checkBoard(items);
         }
-
-
-
     }
 
 }

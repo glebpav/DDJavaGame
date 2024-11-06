@@ -8,7 +8,6 @@ public class BaseScreen extends JFrame {
     public static final int BASE_SCREEN_WIDTH = 400;
     public static final int BASE_SCREEN_HEIGHT = 400;
 
-
     public BaseScreen() {
         this(BASE_SCREEN_WIDTH, BASE_SCREEN_HEIGHT);
     }
@@ -16,6 +15,7 @@ public class BaseScreen extends JFrame {
     public BaseScreen(int screenWidth, int screenHeight) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(screenWidth, screenHeight));
+        setResizable(false);
         pack();
         hideScreen();
         // setLayout(null);

@@ -3,12 +3,15 @@ package edu.mephi.java;
 import edu.mephi.java.screens.GameScreen;
 import edu.mephi.java.screens.MenuScreen;
 
+import static edu.mephi.java.GameSettings.WINDOW_HEIGHT;
+import static edu.mephi.java.GameSettings.WINDOW_WIDTH;
+
 public class Main {
 
 	public static void main(String[] args) {
 
-		MenuScreen menuScreen = new MenuScreen();
-		GameScreen gameScreen = new GameScreen();
+		MenuScreen menuScreen = new MenuScreen(WINDOW_WIDTH, WINDOW_HEIGHT);
+		GameScreen gameScreen = new GameScreen(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 		menuScreen.showScreen();
 
@@ -18,24 +21,6 @@ public class Main {
 			menuScreen.hideScreen();
 		});
 
-
-		// JFrame frame = new JFrame("Three in a row");
-		/*Game game = new Game();
-		frame.add(game);
-		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);*/
-
-		/*game.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (game.isGameOver() && e.getKeyCode() == KeyEvent.VK_R) {
-					game.restart();
-				}
-			}
-		});*/
-
 	}
-
 
 }

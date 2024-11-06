@@ -1,5 +1,5 @@
 package edu.mephi.java.events;
 
-public interface OnScoreEarned {
+public interface OnScoreEarnedListener {
     void onEarn(int score);
 }

@@ -10,8 +10,8 @@ public class MenuScreen extends BaseScreen {
     private final JButton startButton;
     private OnClickListener onButtonStartClicked;
 
-    public MenuScreen() {
-        super();
+    public MenuScreen(int width, int height) {
+        super(width, height);
 
         JLabel label = new JLabel("Menu", SwingConstants.CENTER);
         startButton = new JButton("Start game");
