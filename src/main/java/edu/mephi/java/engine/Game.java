@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-// TODO допишите все необходимые сущности для игры
 public class Game extends JPanel implements ActionListener {
 	private final int TILE_SIZE = 20;
 	private final int WIDTH = 20;
