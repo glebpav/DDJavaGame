@@ -11,7 +11,7 @@ import java.awt.event.MouseMotionAdapter;
 
 import static edu.mephi.java.GameSettings.TILE_SIZE;
 
-public class BoardItem extends JPanel implements Colorable {
+public class BoardItemView extends JPanel implements Colorable {
 
     private boolean wasSwapped;
 
@@ -25,7 +25,7 @@ public class BoardItem extends JPanel implements Colorable {
 
     private OnItemDragListener onItemDraggedListener;
 
-    public BoardItem(int colorIdx) {
+    public BoardItemView(int colorIdx) {
         setColorIdx(colorIdx);
         setPreferredSize(new Dimension(TILE_SIZE, TILE_SIZE));
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -68,7 +68,7 @@ public class BoardItem extends JPanel implements Colorable {
     MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent e) {
-            getParent().setComponentZOrder(BoardItem.this, 0);
+            getParent().setComponentZOrder(BoardItemView.this, 0);
             initialDragX = e.getXOnScreen();
             initialDragY = e.getYOnScreen();
             initialTileX = getX();
@@ -88,7 +88,7 @@ public class BoardItem extends JPanel implements Colorable {
         @Override
         public void mouseDragged(MouseEvent mouseEvent) {
             if (wasSwapped) return;
-            onItemDraggedListener.onDragged(BoardItem.this, mouseEvent);
+            onItemDraggedListener.onDragged(BoardItemView.this, mouseEvent);
         }
     };
 

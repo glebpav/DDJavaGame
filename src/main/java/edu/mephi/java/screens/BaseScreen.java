@@ -3,7 +3,7 @@ package edu.mephi.java.screens;
 import javax.swing.*;
 import java.awt.*;
 
-public class BaseScreen extends JFrame {
+public abstract class BaseScreen extends JFrame {
 
     public static final int BASE_SCREEN_WIDTH = 400;
     public static final int BASE_SCREEN_HEIGHT = 400;

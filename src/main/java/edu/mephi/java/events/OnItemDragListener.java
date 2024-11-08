@@ -1,9 +1,9 @@
 package edu.mephi.java.events;
 
-import edu.mephi.java.components.BoardItem;
+import edu.mephi.java.components.BoardItemView;
 
 import java.awt.event.MouseEvent;
 
 public interface OnItemDragListener {
-    void onDragged(BoardItem boardItem, MouseEvent mouseEvent);
+    void onDragged(BoardItemView boardItemView, MouseEvent mouseEvent);
 }
