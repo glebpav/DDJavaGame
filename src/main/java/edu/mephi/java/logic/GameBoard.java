@@ -91,16 +91,14 @@ public class GameBoard {
 
     public boolean hasMove() {
 
-        // Для каждой ячейки пробуем поменять её местами с соседями
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                // Проверяем соседей (вверх, вниз, влево, вправо)
-                if (row + 1 < rows) { // Сосед снизу
+                if (row + 1 < rows) {
                     if (GameLogic.trySwapAndCheck(boardMatrix, row, col, row + 1, col)) {
                         return true;
                     }
                 }
-                if (col + 1 < cols) { // Сосед справа
+                if (col + 1 < cols) {
                     if (GameLogic.trySwapAndCheck(boardMatrix, row, col, row, col + 1)) {
                         return true;
                     }
@@ -111,9 +109,7 @@ public class GameBoard {
     }
 
     public void putQuizOnBoard() {
-        System.out.println("In put Quiz on board");
         while (!hasMove()) {
-            System.out.println("one iteration");
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < cols; col++) {
                     boardMatrix[row][col].setColorIdx(ColorManager.getRandomColorIdx(NUMBER_OF_TILES_COLORS));

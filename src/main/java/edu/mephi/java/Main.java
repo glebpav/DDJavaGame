@@ -16,7 +16,6 @@ public class Main {
 		menuScreen.showScreen();
 
 		menuScreen.setOnButtonStartClicked(() -> {
-			System.out.println("Start game button clicked");
 			gameScreen.showScreen();
 			menuScreen.hideScreen();
 		});

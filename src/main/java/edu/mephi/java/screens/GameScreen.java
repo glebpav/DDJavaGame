@@ -15,7 +15,7 @@ public class GameScreen extends BaseScreen {
     private BoardView boardView;
     private LoseDialogView loseDialogView;
 
-    private GameBoard gameBoard;
+    private final GameBoard gameBoard;
 
     Session session;
 

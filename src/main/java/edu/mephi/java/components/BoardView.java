@@ -2,7 +2,6 @@ package edu.mephi.java.components;
 
 import edu.mephi.java.events.OnItemDragListener;
 import edu.mephi.java.events.OnItemSwapListener;
-import edu.mephi.java.logic.GameBoard;
 import edu.mephi.java.utils.BoardPoint;
 import edu.mephi.java.utils.ColorManager;
 
@@ -16,7 +15,7 @@ public class BoardView extends JPanel {
     private final int rows = NUMBER_OF_TILES;
     private final int cols = NUMBER_OF_TILES;
 
-    private BoardItemView[][] items;
+    private final BoardItemView[][] items;
 
     private OnItemSwapListener onItemSwapListener;
 
@@ -41,7 +40,6 @@ public class BoardView extends JPanel {
                 items[i][j] = new BoardItemView(ColorManager.getRandomColorIdx(NUMBER_OF_TILES_COLORS));
                 items[i][j].setOnItemDraggedListener(onItemDraggedListener);
                 items[i][j].setBounds(TILE_SIZE * j, TILE_SIZE * i, TILE_SIZE, TILE_SIZE);
-                System.out.println(items[i][j].getX());
                 add(items[i][j]);
             }
         }
@@ -108,7 +106,6 @@ public class BoardView extends JPanel {
             boardItemView.setLocation(pointA);
 
             items[item2.getX()][item2.getY()].wasSwapped();
-            // updateBoard();
         }
     }
 

@@ -18,7 +18,6 @@ public abstract class BaseScreen extends JFrame {
         setResizable(false);
         pack();
         hideScreen();
-        // setLayout(null);
     }
 
     public void showScreen() {

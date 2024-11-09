@@ -5,14 +5,13 @@ import java.awt.*;
 
 public class LoseDialogView extends JDialog {
 
-    private JButton exitButton;
+    private final JButton exitButton;
 
     public LoseDialogView(JFrame parent) {
         super(parent);
         JLabel label = new JLabel("You lost :-(");
         exitButton = new JButton("Close game");
         label.setHorizontalAlignment(SwingConstants.CENTER);
-
 
         JComponent gap = new JPanel();
 
